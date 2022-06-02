@@ -1,7 +1,7 @@
 <script lang="ts">
 import { useStore } from 'vuex'
 import { key } from '../store'
-import { defineProps, computed } from 'vue'
+import { computed } from 'vue'
 import { Presentation } from '@/models/presentation';
 import GalleryCard from './GalleryCard.vue';
 
@@ -12,20 +12,19 @@ export default {
   components: { GalleryCard },
   setup() {
     const store = useStore(key)
+
+    store.dispatch('fetchPresentations')
+
     return {
-      abba: computed(() => true/*store.state.presentations*/)
+      presentations: computed(() => store.state.presentations),
+      store
     }
   },
 }
-
-defineProps<{
-  presentations: Presentation[],
-}>()
 </script>
 
 <template>
   <h1>Gallery</h1>
-  <p>{{ abba }}</p>
   <div v-for="(presentation, index) in presentations">
     <GalleryCard :presentation="presentation" :id="index" />
   </div>

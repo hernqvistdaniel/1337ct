@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <p>card</p>
+  <p>{{ presentation.name }}</p>
 </template>
 
 <style scoped>
