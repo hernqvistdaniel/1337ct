@@ -7,7 +7,7 @@ const title = 'The fellowship of the tretton37';
 
 <template>
   <header>
-    <p>{{ title }}</p>
+    <h1 class="title">{{ title }}</h1>
   </header>
   <main>
     <div class="wrapper">
@@ -30,6 +30,10 @@ const title = 'The fellowship of the tretton37';
 
 header {
   line-height: 1.5;
+}
+
+.title {
+  padding: 10px;
 }
 
 @media (min-width: 1024px) {}

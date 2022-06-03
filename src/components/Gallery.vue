@@ -24,11 +24,15 @@ export default {
 </script>
 
 <template>
-  <h1>Gallery</h1>
-  <div v-for="(presentation, index) in presentations">
-    <GalleryCard :presentation="presentation" :id="index" />
+  <div class="cardContainer">
+    <GalleryCard v-for="(presentation, index) in presentations" :presentation="presentation" :id="index" />
   </div>
 </template>
 
 <style scoped>
+.cardContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 </style>
