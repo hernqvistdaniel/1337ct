@@ -9,21 +9,23 @@ defineProps<{
 <template>
   <div class="card">
     <div class="imgContainer">
-      <img class="cardImg" :src="presentation.imagePortraitUrl" />
+      <img v-if="presentation?.imagePortraitUrl" class="cardImg" :src="presentation.imagePortraitUrl" />
+      <p v-if="!presentation?.imagePortraitUrl">No picture</p>
     </div>
     <div class="cardInfo">
       <div class="texts">
-        <p class="cardText">{{ presentation.name }}</p>
-        <p class="cardText">Office: {{ presentation.office }}</p>
+        <p v-if="presentation?.name" class="cardText">{{ presentation.name }}</p>
+        <p v-if="presentation?.office" class="cardText">Office: {{ presentation.office }}</p>
       </div>
       <div class="iconContainer">
-        <a v-if="presentation.linkedIn" :href="'http://linkedin.com/' + presentation.linkedIn">
+        <a v-if="presentation?.linkedIn" :href="'http://linkedin.com/' + presentation.linkedIn">
           <font-awesome-icon class="icon" :icon="['fas', 'phone']" />
+
         </a>
-        <a v-if="presentation.gitHub" :href="'http://github.com/' + presentation.gitHub">
+        <a v-if="presentation?.gitHub" :href="'http://github.com/' + presentation.gitHub">
           <font-awesome-icon class="icon" :icon="['fas', 'gamepad']" />
         </a>
-        <a v-if="presentation.twitter" :href="'http://twitter.com/' + presentation.twitter">
+        <a v-if="presentation?.twitter" :href="'http://twitter.com/' + presentation.twitter">
           <font-awesome-icon class="icon" :icon="['fas', 'satellite']" />
         </a>
       </div>

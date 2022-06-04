@@ -1,0 +1,3 @@
+// Vitest Snapshot v1
+
+exports[`Gallery.vue > matches a snapshot 1`] = `"<div class=\\"cardContainer\\" data-v-15c1b052=\\"\\"></div>"`;

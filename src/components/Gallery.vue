@@ -1,31 +1,54 @@
 <script lang="ts">
-import { useStore } from 'vuex'
-import { key } from '../store'
-import { computed } from 'vue'
-import { Presentation } from '@/models/presentation';
 import GalleryCard from './GalleryCard.vue';
 
 export default {
-  count: Number,
-  presentation: Presentation,
-
   components: { GalleryCard },
-  setup() {
-    const store = useStore(key)
-
-    store.dispatch('fetchPresentations')
-
+  props: ['filter', 'presentations', 'sort'],
+  data() {
     return {
-      presentations: computed(() => store.state.presentations),
-      store
+      filteredPres: null,
+      sortedPres: null
     }
   },
+  methods: {
+    changeFilter() {
+      console.log(this.filteredPres)
+      this.filteredPres = this.presentations.filter(pres => {
+        if (pres.office) {
+          return pres.office.toLowerCase() == this.filter.toLowerCase()
+        }
+      })
+      console.log(this.filteredPres)
+    },
+    changeSort() {
+      console.log(this.sortedPres)
+      this.sortedPres = this.presentations.sort((a, b) => {
+        if (a.phoneNumber && b.phoneNumber) {
+          return a.phoneNumber.localeCompare(b.phoneNumber)
+        }
+      })
+
+    }
+  },
+  watch: {
+    filter() {
+      this.changeFilter()
+    },
+    sort() {
+      this.changeSort()
+    }
+  },
+  mounted() {
+    console.log(this.presentations)
+    this.filteredPres = this.presentations
+    this.sortedPres = this.presentations
+  }
 }
 </script>
 
 <template>
   <div class="cardContainer">
-    <GalleryCard v-for="(presentation, index) in presentations" :presentation="presentation" :id="index" />
+    <GalleryCard v-for="(presentation, index) in filteredPres" :presentation="presentation" :id="index" />
   </div>
 </template>
 

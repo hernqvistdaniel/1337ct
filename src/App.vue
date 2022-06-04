@@ -1,7 +1,41 @@
-<script setup lang="ts">
+<script lang="ts">
 import NavBar from './components/NavBar.vue';
 import Gallery from './components/Gallery.vue';
-const title = 'The fellowship of the tretton37';
+import { useStore } from 'vuex'
+import { key } from './store'
+import { computed } from 'vue'
+
+export default {
+  components: { NavBar, Gallery },
+  data() {
+    return {
+      filter: null,
+      sort: null,
+      title: 'The fellowship of the tretton37'
+    }
+  },
+  setup() {
+    const store = useStore(key)
+    if (store) {
+      store.dispatch('fetchPresentations')
+    }
+
+    return {
+      presentations: computed(() => {
+        return store.state.presentations
+      }),
+      store
+    }
+  },
+  methods: {
+    passFilter(incFilter: string) {
+      this.filter = incFilter
+    },
+    passSort(incSort: string) {
+      this.sort = incSort
+    }
+  }
+}
 </script>
 
 
@@ -11,8 +45,8 @@ const title = 'The fellowship of the tretton37';
   </header>
   <main>
     <div class="wrapper">
-      <NavBar />
-      <Gallery />
+      <NavBar @handleSort="passSort($event)" @handleFilter="passFilter($event)" />
+      <Gallery v-if="presentations.length > 0" :presentations="presentations" :sort="sort" :filter="filter" />
     </div>
   </main>
 </template>
