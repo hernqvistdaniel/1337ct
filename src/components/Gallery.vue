@@ -1,9 +1,10 @@
 <script lang="ts">
 import GalleryCard from './GalleryCard.vue';
+import ListView from './ListView.vue'
 
 export default {
-  components: { GalleryCard },
-  props: ['filter', 'presentations', 'sort'],
+  components: { GalleryCard, ListView },
+  props: ['filter', 'presentations', 'sort', 'view'],
   data() {
     return {
       filteredPres: null,
@@ -12,22 +13,22 @@ export default {
   },
   methods: {
     changeFilter() {
-      console.log(this.filteredPres)
-      this.filteredPres = this.presentations.filter(pres => {
-        if (pres.office) {
-          return pres.office.toLowerCase() == this.filter.toLowerCase()
-        }
-      })
-      console.log(this.filteredPres)
+      if (this.filter == 'all') {
+        this.filteredPres = this.presentations
+      } else {
+        this.filteredPres = this.presentations.filter(pres => {
+          if (pres.office) {
+            return pres.office.toLowerCase() == this.filter.toLowerCase()
+          }
+        })
+      }
     },
     changeSort() {
-      console.log(this.sortedPres)
       this.sortedPres = this.presentations.sort((a, b) => {
         if (a.phoneNumber && b.phoneNumber) {
           return a.phoneNumber.localeCompare(b.phoneNumber)
         }
       })
-
     }
   },
   watch: {
@@ -39,7 +40,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.presentations)
     this.filteredPres = this.presentations
     this.sortedPres = this.presentations
   }
@@ -47,8 +47,15 @@ export default {
 </script>
 
 <template>
-  <div class="cardContainer">
-    <GalleryCard v-for="(presentation, index) in filteredPres" :presentation="presentation" :id="index" />
+  <div v-if="presentations && presentations.length > 0" class="cardContainer">
+    <GalleryCard v-if="view !== 'list'" v-for="(presentation, index) in filteredPres" :presentation="presentation"
+      :id="index" />
+    <ul v-if="view == 'list'">
+      <ListView v-for="(presentation, index) in filteredPres" :presentation="presentation" :id="index" />
+    </ul>
+  </div>
+  <div v-else class="cardContainer">
+    <p>Could not fetch any users</p>
   </div>
 </template>
 
@@ -57,5 +64,6 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  padding: 40px;
 }
 </style>

@@ -10,7 +10,7 @@ describe('GalleryCard.vue', () => {
     expect(wrapper.html()).toBeTruthy()
   })
 
-  it('logs', () => {
-    console.log(wrapper.html())
+  it('matches a snapshot', () => {
+    expect(wrapper.html()).toMatchSnapshot()
   })
 })

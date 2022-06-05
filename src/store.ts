@@ -28,14 +28,19 @@ export const store = createStore<State>({
   },
   actions: {
     async fetchPresentations({commit}) {
-      const response = await axios.get('https://api.1337co.de/v3/employees', {
-        headers: {
-          Accept: 'application/json',
-          Authorization: config.API_KEY
-        }
-      })
-      if(response.status === 200) {
-        this.commit('savePresentations', response.data)
+      try {
+        const response = await axios.get('https://api.1337co.de/v3/employees', {
+          headers: {
+            Accept: 'application/json',
+            Authorization: config.API_KEY
+          }
+        })
+        if(response.status === 200) {
+          this.commit('savePresentations', response.data)
+        }  
+      } catch(e) {
+        // display error
+        console.log(e)
       }
     }
   }

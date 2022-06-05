@@ -1,0 +1,22 @@
+// Vitest Snapshot v1
+
+exports[`GalleryCard.vue > matches a snapshot 1`] = `
+"<div class=\\"card\\" data-v-2b6d1a82=\\"\\">
+  <div class=\\"imgContainer\\" data-v-2b6d1a82=\\"\\"><img class=\\"cardImg\\" src=\\"https://i.1337co.de/profile/akan-murat-cimen\\" data-v-2b6d1a82=\\"\\">
+    <!--v-if-->
+  </div>
+  <div class=\\"cardInfo\\" data-v-2b6d1a82=\\"\\">
+    <div class=\\"texts\\" data-v-2b6d1a82=\\"\\">
+      <p class=\\"cardText\\" data-v-2b6d1a82=\\"\\">Akan Murat Cimen</p>
+      <p class=\\"cardText\\" data-v-2b6d1a82=\\"\\">Office: Lund</p>
+    </div>
+    <div class=\\"iconContainer\\" data-v-2b6d1a82=\\"\\"><a href=\\"http://linkedin.com//in/akanmuratcimen/\\" data-v-2b6d1a82=\\"\\">
+        <font-awesome-icon class=\\"icon\\" icon=\\"fas,phone\\" data-v-2b6d1a82=\\"\\"></font-awesome-icon>
+      </a><a href=\\"http://github.com/akanmuratcimen\\" data-v-2b6d1a82=\\"\\">
+        <font-awesome-icon class=\\"icon\\" icon=\\"fas,gamepad\\" data-v-2b6d1a82=\\"\\"></font-awesome-icon>
+      </a>
+      <!--v-if-->
+    </div>
+  </div>
+</div>"
+`;

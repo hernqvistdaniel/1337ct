@@ -11,6 +11,7 @@ export default {
     return {
       filter: null,
       sort: null,
+      view: null,
       title: 'The fellowship of the tretton37'
     }
   },
@@ -33,6 +34,9 @@ export default {
     },
     passSort(incSort: string) {
       this.sort = incSort
+    },
+    passView(incView: string) {
+      this.view = incView
     }
   }
 }
@@ -45,8 +49,10 @@ export default {
   </header>
   <main>
     <div class="wrapper">
-      <NavBar @handleSort="passSort($event)" @handleFilter="passFilter($event)" />
-      <Gallery v-if="presentations.length > 0" :presentations="presentations" :sort="sort" :filter="filter" />
+      <NavBar @handleView="passView($event)" @handleSort="passSort($event)" @handleFilter="passFilter($event)"
+        :view="view" />
+      <Gallery v-if="presentations.length > 0" :view="view" :presentations="presentations" :sort="sort"
+        :filter="filter" />
     </div>
   </main>
 </template>

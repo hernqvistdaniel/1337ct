@@ -1,5 +1,6 @@
 <script lang="ts">
 export default {
+  props: ['view'],
   location: String,
   methods: {
     handleFilter(filter) {
@@ -7,6 +8,9 @@ export default {
     },
     handleSort(sort) {
       this.$emit('handleSort', sort)
+    },
+    handleView(view) {
+      this.$emit('handleView', view)
     }
   }
 }
@@ -14,7 +18,11 @@ export default {
 
 <template>
   <div class="navbar">
-    <button @click="handleSort($event.target.value)" value="firstName" class="navitem">Sort first name</button>
+    <button v-if="view !== 'list'" @click="handleView($event.target.value)" value="list" class="navitem">View as
+      list</button>
+    <button v-if="view == 'list'" @click="handleView($event.target.value)" value="cards" class="navitem">View as
+      cards</button>
+    <button @click="handleSort($event.target.value)" value="phone" class="navitem">Sort on phonenumber?</button>
     <p>Office:</p>
     <label class="navitem">
       <input name="officeSelection" v-model="location" type="text">

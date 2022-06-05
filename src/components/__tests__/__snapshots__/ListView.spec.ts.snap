@@ -1,0 +1,15 @@
+// Vitest Snapshot v1
+
+exports[`ListView.vue > matches a snapshot 1`] = `
+"<li data-v-a09dd1da=\\"\\">
+  <div class=\\"texts\\" data-v-a09dd1da=\\"\\">
+    <p class=\\"cardText\\" data-v-a09dd1da=\\"\\">Akan Murat Cimen</p>
+    <p class=\\"cardText\\" data-v-a09dd1da=\\"\\">Office: Lund</p><a href=\\"http://linkedin.com//in/akanmuratcimen/\\" data-v-a09dd1da=\\"\\">
+      <font-awesome-icon class=\\"icon\\" icon=\\"fas,phone\\" data-v-a09dd1da=\\"\\"></font-awesome-icon>
+    </a><a href=\\"http://github.com/akanmuratcimen\\" data-v-a09dd1da=\\"\\">
+      <font-awesome-icon class=\\"icon\\" icon=\\"fas,gamepad\\" data-v-a09dd1da=\\"\\"></font-awesome-icon>
+    </a>
+    <!--v-if-->
+  </div>
+</li>"
+`;

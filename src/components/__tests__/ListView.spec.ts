@@ -1,10 +1,10 @@
 import { describe, it, expect } from 'vitest'
 
 import { shallowMount } from '@vue/test-utils'
-import GalleryCard from '../GalleryCard.vue'
+import ListView from '../ListView.vue'
 
-describe('GalleryCard.vue', () => {
-  const wrapper = shallowMount(GalleryCard, { props: {
+describe('ListView.vue', () => {
+  const wrapper = shallowMount(ListView, { props: {
     presentation:
       {
         "name": "Akan Murat Cimen",
@@ -27,13 +27,6 @@ describe('GalleryCard.vue', () => {
 
   it('renders properly', () => {
     expect(wrapper.html()).toBeTruthy()
-  })
-
-
-  it('displays a text if imagelink is not provided', () => {
-    const newWrapper = shallowMount(GalleryCard)
-    const noPicture = newWrapper.find('p')
-    expect(noPicture.text()).toBe('No picture')
   })
 
   it('renders a font-awesome component', () => {

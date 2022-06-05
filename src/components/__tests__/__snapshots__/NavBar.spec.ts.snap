@@ -1,0 +1,8 @@
+// Vitest Snapshot v1
+
+exports[`GalleryCard.vue > matches a snapshot 1`] = `
+"<div class=\\"navbar\\" data-v-4295d220=\\"\\"><button class=\\"navitem\\" value=\\"list\\" data-v-4295d220=\\"\\">View as list</button>
+  <!--v-if--><button class=\\"navitem\\" value=\\"phone\\" data-v-4295d220=\\"\\">Sort on phonenumber?</button>
+  <p data-v-4295d220=\\"\\">Office:</p><label class=\\"navitem\\" data-v-4295d220=\\"\\"><input name=\\"officeSelection\\" type=\\"text\\" data-v-4295d220=\\"\\"><button data-v-4295d220=\\"\\">sök</button></label><label class=\\"navitem\\" data-v-4295d220=\\"\\"> All <input name=\\"officeSelection\\" type=\\"radio\\" value=\\"all\\" data-v-4295d220=\\"\\"></label>
+</div>"
+`;
