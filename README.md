@@ -1,9 +1,11 @@
 # 1337CT
 
 Add config.ts in /src with the following data:
+```sh
 export default {
   API_KEY: *******
 }
+```
 
 ## Customize configuration
 
